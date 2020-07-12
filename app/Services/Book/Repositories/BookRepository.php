@@ -10,10 +10,6 @@ class BookRepository implements BookRepositoryInterface
         return $query->paginate();
     }
 
-    public function get(){
-        //
-    }
-
     public function create(array $data){
         return Book::create($data);
     }

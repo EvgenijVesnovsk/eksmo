@@ -8,8 +8,6 @@ interface BookRepositoryInterface
 {
     public function list($query);
 
-    public function get();
-
     public function create(array $data);
 
     public function update(array $data, Book $book);
