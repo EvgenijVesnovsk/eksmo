@@ -14,6 +14,7 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         $this->bindBook();
+        $this->bindBookStatusTransition();
     }
 
     private function bindBook()
@@ -21,6 +22,14 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             \App\Services\Book\Repositories\BookRepositoryInterface::class,
             \App\Services\Book\Repositories\BookRepository::class
+        );
+    }
+
+    private function bindBookStatusTransition()
+    {
+        $this->app->bind(
+            \App\Services\BookStatusTransition\Repositories\BookStatusTransitionRepositoryInterface::class,
+            \App\Services\BookStatusTransition\Repositories\BookStatusTransitionRepository::class
         );
     }
 
