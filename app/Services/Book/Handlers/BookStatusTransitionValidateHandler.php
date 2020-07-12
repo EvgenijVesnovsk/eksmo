@@ -17,6 +17,12 @@ class BookStatusTransitionValidateHandler
         $this->repository = $repository;
     }
 
+    /**
+     * Book status transition validate
+     *
+     * @param $data
+     * @param $book
+     */
     public function handler($data, $book)
     {
         if (isset($data['status_id']) && $book->status_id !== $data['status_id']) {
