@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Services\ExampleRemoteService\ExampleRemoteService;
 
 class Book extends Model
 {
@@ -10,6 +11,17 @@ class Book extends Model
         'status_id',
         'name'
     ];
+
+    protected static function booted()
+    {
+        static::updated(function ($book) {
+            $service = app()->make(ExampleRemoteService::class);
+            $service->sendDataToService([
+                'name' => $book->name,
+                'status' => $book->status->name
+            ]);
+        });
+    }
 
     public function status()
     {
