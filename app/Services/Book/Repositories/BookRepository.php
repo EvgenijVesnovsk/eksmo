@@ -14,15 +14,15 @@ class BookRepository implements BookRepositoryInterface
         //
     }
 
-    public function create(){
-        //
+    public function create(array $data){
+        return Book::create($data);
     }
 
-    public function update(){
-        //
+    public function update(array $data, Book $book){
+        return $book->update($data);
     }
 
-    public function delete(){
-        //
+    public function delete(Book $book){
+        return $book->delete();
     }
 }

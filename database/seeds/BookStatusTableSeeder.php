@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use App\Enums\BookEnum;
 
 class BookStatusTableSeeder extends Seeder
 {
@@ -13,10 +14,10 @@ class BookStatusTableSeeder extends Seeder
     public function run()
     {
         DB::table('book_statuses')->insert([
-            ['id' => 1, 'name' => 'Черновик'],
-            ['id' => 2, 'name' => 'Производство'],
-            ['id' => 3, 'name' => 'Печать'],
-            ['id' => 4, 'name' => 'Выпущена'],
+            ['id' => BookEnum::DRAFT, 'name' => 'Черновик'],
+            ['id' => BookEnum::PRODUCTION, 'name' => 'Производство'],
+            ['id' => BookEnum::PRINT, 'name' => 'Печать'],
+            ['id' => BookEnum::RELEASED, 'name' => 'Выпущена'],
         ]);
     }
 }

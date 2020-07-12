@@ -4,6 +4,7 @@ namespace App\Services\Book;
 
 use App\Services\Book\Repositories\BookRepositoryInterface;
 use App\Models\Book;
+use App\Enums\BookEnum;
 
 class BookService
 {
@@ -36,15 +37,17 @@ class BookService
         //
     }
 
-    public function create(){
-        //
+    public function create($data){
+        $data['status_id'] = BookEnum::DRAFT;
+        return $this->repository->create($data);
     }
 
-    public function update(){
-        //
+    public function update($data, $book){
+        $this->repository->update($data, $book);
+        return $book;
     }
 
-    public function delete(){
-        //
+    public function delete($book){
+        return $this->repository->delete($book);
     }
 }

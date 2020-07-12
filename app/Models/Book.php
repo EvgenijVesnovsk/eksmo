@@ -6,6 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Book extends Model
 {
+    protected $fillable = [
+        'status_id',
+        'name'
+    ];
+
     public function status()
     {
         return $this->belongsTo(BookStatus::class, 'status_id','id');
