@@ -38,11 +38,6 @@ class BookService
         return $this->repository->list($books)->appends(request()->except('page'));
     }
 
-    public function get()
-    {
-        //
-    }
-
     public function create($data)
     {
         $data['status_id'] = BookEnum::DRAFT;
